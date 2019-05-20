@@ -12,58 +12,34 @@ import SceneKit
 
 class GameViewController: UIViewController {
 
+    var scnView: SCNView!
+    var scnScene: SCNScene!
+    var cameraNode: SCNNode!
+    
+    let position = SCNVector3(x: 2, y: 3, z: 5)
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // create a new scene
-        let scene = SCNScene(named: "art.scnassets/ship.scn")!
+        setupView()
+        setupScene()
+        setupCamera()
+        spawnShape()
         
-        // create and add a camera to the scene
-        let cameraNode = SCNNode()
-        cameraNode.camera = SCNCamera()
-        scene.rootNode.addChildNode(cameraNode)
+        let x = position.x
+        let y = position.y
+        let z = position.z
         
-        // place the camera
-        cameraNode.position = SCNVector3(x: 0, y: 0, z: 15)
         
-        // create and add a light to the scene
-        let lightNode = SCNNode()
-        lightNode.light = SCNLight()
-        lightNode.light!.type = .omni
-        lightNode.position = SCNVector3(x: 0, y: 10, z: 10)
-        scene.rootNode.addChildNode(lightNode)
         
-        // create and add an ambient light to the scene
-        let ambientLightNode = SCNNode()
-        ambientLightNode.light = SCNLight()
-        ambientLightNode.light!.type = .ambient
-        ambientLightNode.light!.color = UIColor.darkGray
-        scene.rootNode.addChildNode(ambientLightNode)
         
-        // retrieve the ship node
-        let ship = scene.rootNode.childNode(withName: "ship", recursively: true)!
-        
-        // animate the 3d object
-        ship.runAction(SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: 2, z: 0, duration: 1)))
-        
-        // retrieve the SCNView
-        let scnView = self.view as! SCNView
-        
-        // set the scene to the view
-        scnView.scene = scene
-        
-        // allows the user to manipulate the camera
-        scnView.allowsCameraControl = true
-        
-        // show statistics such as fps and timing information
-        scnView.showsStatistics = true
-        
-        // configure the view
-        scnView.backgroundColor = UIColor.black
-        
-        // add a tap gesture recognizer
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
         scnView.addGestureRecognizer(tapGesture)
+        
+        
+        
     }
     
     @objc
@@ -83,23 +59,27 @@ class GameViewController: UIViewController {
             let material = result.node.geometry!.firstMaterial!
             
             // highlight it
-            SCNTransaction.begin()
-            SCNTransaction.animationDuration = 0.5
+//            SCNTransaction.begin()
+//            SCNTransaction.animationDuration = 0.5
+//
+//            // on completion - unhighlight
+//            SCNTransaction.completionBlock = {
+//                SCNTransaction.begin()
+//                SCNTransaction.animationDuration = 0.5
+//
+//                material.emission.contents = UIColor.black
+//
+//                SCNTransaction.commit()
+//            }
+//
+//            material.emission.contents = UIColor.red
+//
+//            SCNTransaction.commit()
+            performSegue(withIdentifier: "transform_segue", sender: nil)
             
-            // on completion - unhighlight
-            SCNTransaction.completionBlock = {
-                SCNTransaction.begin()
-                SCNTransaction.animationDuration = 0.5
-                
-                material.emission.contents = UIColor.black
-                
-                SCNTransaction.commit()
-            }
-            
-            material.emission.contents = UIColor.red
-            
-            SCNTransaction.commit()
         }
+
+        
     }
     
     override var shouldAutorotate: Bool {
@@ -107,7 +87,64 @@ class GameViewController: UIViewController {
     }
     
     override var prefersStatusBarHidden: Bool {
+        
+        
         return true
+    }
+    
+    func setupView(){
+        scnView = self.view as! SCNView
+        scnView.showsStatistics = true
+        scnView.allowsCameraControl = true
+        scnView.autoenablesDefaultLighting = true
+    }
+    
+    func setupScene(){
+        scnScene = SCNScene()
+        scnView.scene = scnScene
+        
+    }
+
+    func setupCamera(){
+        cameraNode = SCNNode()
+        cameraNode.camera = SCNCamera()
+        cameraNode.position = SCNVector3(x: 0, y: 0 , z: 10)
+        scnScene.rootNode.addChildNode(cameraNode)
+    }
+    
+    func spawnShape(){
+        var geometry: SCNGeometry
+        
+        switch ShapeType.random(){
+        default:
+            geometry = SCNBox(width: 1, height: 1, length: 1, chamferRadius: 0)
+        }
+        
+        let color = randomColor()
+//        geometry.materials.first?.diffuse.contents = color
+        
+        let geometryNode = SCNNode(geometry: geometry)
+        scnScene.rootNode.addChildNode(geometryNode)
+        
+        
+        
+    }
+    
+    
+    
+    func randomColor() -> UIColor{
+        
+        
+        let randomRed = CGFloat(arc4random()) / CGFloat(UInt32.max)
+        let randomBlue = CGFloat(arc4random()) / CGFloat(UInt32.max)
+        let randomGreen = CGFloat(arc4random()) / CGFloat(UInt32.max)
+        
+        let color = UIColor(red: randomRed, green: randomGreen, blue: randomBlue, alpha: 1)
+        return color
+    }
+    
+    func moveCamera(){
+        
     }
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
@@ -117,5 +154,7 @@ class GameViewController: UIViewController {
             return .all
         }
     }
+
+    
 
 }

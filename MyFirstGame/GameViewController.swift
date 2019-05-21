@@ -15,6 +15,7 @@ class GameViewController: UIViewController {
     var scnView: SCNView!
     var scnScene: SCNScene!
     var cameraNode: SCNNode!
+     var geometry: SCNGeometry!
     
     let position = SCNVector3(x: 2, y: 3, z: 5)
     
@@ -32,7 +33,15 @@ class GameViewController: UIViewController {
         let y = position.y
         let z = position.z
         
+    
+//        let boxRotate = scnScene.rootNode.childNode(withName: "geometry", recursively: true)!
+//        boxRotate.runAction(SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: 2, z: 0, duration: 1)))
+//
         
+        let materialBox = SCNMaterialProperty.accessibilityAttributedLabel()
+        materialBox?.accessibilityLabel?.append("?")
+        
+        print(materialBox)
         
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
@@ -58,6 +67,7 @@ class GameViewController: UIViewController {
             // get its material
             let material = result.node.geometry!.firstMaterial!
             
+            let materialNode = scnScene.rootNode.childNode(withName: "material", recursively: true)
             // highlight it
 //            SCNTransaction.begin()
 //            SCNTransaction.animationDuration = 0.5
@@ -113,19 +123,25 @@ class GameViewController: UIViewController {
     }
     
     func spawnShape(){
-        var geometry: SCNGeometry
+        
         
         switch ShapeType.random(){
         default:
-            geometry = SCNBox(width: 1, height: 1, length: 1, chamferRadius: 0)
+            geometry = SCNBox(width: 3, height: 3, length: 3, chamferRadius: 0)
         }
         
         let color = randomColor()
 //        geometry.materials.first?.diffuse.contents = color
         
         let geometryNode = SCNNode(geometry: geometry)
-        scnScene.rootNode.addChildNode(geometryNode)
+    
+//
         
+//        [geometryNode .runAction(SCNAction .repeatForever(SCNAction .rotateBy(x: 0, y: 0, z: 2*M_PI, duration: 3)))]
+        scnScene.rootNode.addChildNode(geometryNode)
+//        let cameraBox = geometryNode.camera?.automaticallyAdjustsZRange
+        
+
         
         
     }
@@ -143,9 +159,7 @@ class GameViewController: UIViewController {
         return color
     }
     
-    func moveCamera(){
-        
-    }
+    
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         if UIDevice.current.userInterfaceIdiom == .phone {

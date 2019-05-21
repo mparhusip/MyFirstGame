@@ -13,13 +13,50 @@ class GameScene: SKScene {
     
     
     let label = SKLabelNode(text: "Happy Birthday")
-    let particle = SKEmitterNode(fileNamed: "MyParticle")!
-    let particleBlue = SKEmitterNode(fileNamed: "MyParticle")
-    let particleRed = SKEmitterNode(fileNamed: "MyParticle")
+    let particle = SKEmitterNode(fileNamed: "MyParticle2")!
+    let particleBlue = SKEmitterNode(fileNamed: "MyParticle2")
+    let particleRed = SKEmitterNode(fileNamed: "MyParticle2")
     
     
     
     override func didMove(to view: SKView) {
+//
+//        addChild(label)
+//        addChild(particle)
+//        addChild(particleBlue!)
+//        addChild(particleRed!)
+//
+//        label.position = CGPoint(x: view.frame.width / 2 , y: view.frame.height / 2)
+//        label.fontSize = 50
+//        label.fontColor = SKColor.yellow
+//        label.fontName = "Avenir"
+//
+//        particle.particleColor = .white
+//
+//        DispatchQueue.main.async {
+//            self.particle.position = CGPoint(x: CGFloat.random(in: 0...view.frame.width), y: CGFloat.random(in: 0...view.frame.height))
+//
+//            // Fade Out Action
+//            //        let moveParticle = SKAction.fadeOut(withDuration: 1)
+//            //
+//            //        particle.run(moveParticle)
+//
+//
+//            if let part = self.particleBlue {
+//                print(part.particleColor)
+//                part.particleColor = UIColor.blue
+//                print(part.particleColor)
+//                part.position = CGPoint(x: CGFloat.random(in: 0...view.frame.width), y: CGFloat.random(in: 0...view.frame.height))
+//            }
+//
+//            self.particleRed?.particleColor = UIColor.red
+//            print("red")
+//            self.particleRed?.position = CGPoint(x: CGFloat.random(in: 0...view.frame.width), y: CGFloat.random(in: 0...view.frame.height))
+//        }
+//
+//        let recognizer = UITapGestureRecognizer(target: self, action: #selector(tap))
+//        view.addGestureRecognizer(recognizer)
+
         
         addChild(label)
         addChild(particle)

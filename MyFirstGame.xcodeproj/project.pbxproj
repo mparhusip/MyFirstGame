@@ -11,7 +11,8 @@
 		3121F3CB22925B5D00086FE4 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3121F3CA22925B5D00086FE4 /* GameScene.swift */; };
 		3121F3CD22925C1800086FE4 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3121F3CC22925C1800086FE4 /* Actions.sks */; };
 		3121F3CF22925C4C00086FE4 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3121F3CE22925C4C00086FE4 /* GameScene.sks */; };
-		3121F3D12292637F00086FE4 /* MyParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3121F3D02292637F00086FE4 /* MyParticle.sks */; };
+		31C2C7BA2293CF000076D0D6 /* MyParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 31C2C7B92293CF000076D0D6 /* MyParticle.sks */; };
+		31C2C7BC2293CF640076D0D6 /* MyParticle2.sks in Resources */ = {isa = PBXBuildFile; fileRef = 31C2C7BB2293CF640076D0D6 /* MyParticle2.sks */; };
 		31C3EC49228F8E04001E84D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C3EC48228F8E04001E84D8 /* AppDelegate.swift */; };
 		31C3EC4D228F8E04001E84D8 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C3EC4C228F8E04001E84D8 /* GameViewController.swift */; };
 		31C3EC50228F8E04001E84D8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31C3EC4E228F8E04001E84D8 /* Main.storyboard */; };
@@ -26,7 +27,8 @@
 		3121F3CA22925B5D00086FE4 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		3121F3CC22925C1800086FE4 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
 		3121F3CE22925C4C00086FE4 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
-		3121F3D02292637F00086FE4 /* MyParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticle.sks; sourceTree = "<group>"; };
+		31C2C7B92293CF000076D0D6 /* MyParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = MyParticle.sks; path = ../../testFireworksawal/testFireworks/MyParticle.sks; sourceTree = "<group>"; };
+		31C2C7BB2293CF640076D0D6 /* MyParticle2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticle2.sks; sourceTree = "<group>"; };
 		31C3EC45228F8E04001E84D8 /* MyFirstGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyFirstGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31C3EC48228F8E04001E84D8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		31C3EC4C228F8E04001E84D8 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -79,7 +81,8 @@
 				3121F3CA22925B5D00086FE4 /* GameScene.swift */,
 				3121F3CC22925C1800086FE4 /* Actions.sks */,
 				3121F3CE22925C4C00086FE4 /* GameScene.sks */,
-				3121F3D02292637F00086FE4 /* MyParticle.sks */,
+				31C2C7B92293CF000076D0D6 /* MyParticle.sks */,
+				31C2C7BB2293CF640076D0D6 /* MyParticle2.sks */,
 			);
 			path = MyFirstGame;
 			sourceTree = "<group>";
@@ -161,11 +164,12 @@
 			files = (
 				31C3EC55228F8E04001E84D8 /* LaunchScreen.storyboard in Resources */,
 				31C3EC52228F8E04001E84D8 /* Assets.xcassets in Resources */,
+				31C2C7BC2293CF640076D0D6 /* MyParticle2.sks in Resources */,
 				3121F3CD22925C1800086FE4 /* Actions.sks in Resources */,
 				31DA1320228FAED4006225E3 /* MyAssetGame.scnassets in Resources */,
+				31C2C7BA2293CF000076D0D6 /* MyParticle.sks in Resources */,
 				31C3EC50228F8E04001E84D8 /* Main.storyboard in Resources */,
 				3121F3CF22925C4C00086FE4 /* GameScene.sks in Resources */,
-				3121F3D12292637F00086FE4 /* MyParticle.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

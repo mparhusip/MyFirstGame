@@ -38,11 +38,11 @@ class GameViewController: UIViewController {
 //        boxRotate.runAction(SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: 2, z: 0, duration: 1)))
 //
         
-        let materialBox = SCNMaterialProperty.accessibilityAttributedLabel()
-        materialBox?.accessibilityLabel?.append("?")
-        
-        print(materialBox)
-        
+//        let materialBox = SCNMaterialProperty.accessibilityAttributedLabel()
+//        materialBox?.accessibilityLabel?.append("?")
+//
+//        print(materialBox)
+//
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
         scnView.addGestureRecognizer(tapGesture)
@@ -105,7 +105,8 @@ class GameViewController: UIViewController {
     func setupView(){
         scnView = self.view as! SCNView
         scnView.showsStatistics = true
-        scnView.allowsCameraControl = true
+//        scnView.allowsCameraControl = true
+        scnView.allowsCameraControl = false
         scnView.autoenablesDefaultLighting = true
     }
     
@@ -131,7 +132,7 @@ class GameViewController: UIViewController {
         }
         
         let color = randomColor()
-//        geometry.materials.first?.diffuse.contents = color
+        geometry.materials.first?.diffuse.contents = color
         
         let geometryNode = SCNNode(geometry: geometry)
     
@@ -141,8 +142,9 @@ class GameViewController: UIViewController {
         scnScene.rootNode.addChildNode(geometryNode)
 //        let cameraBox = geometryNode.camera?.automaticallyAdjustsZRange
         
-
-        
+        let rotate = SCNAction.rotateBy(x: 3, y: 3, z: 10, duration: 5)
+        let rotateForever = SCNAction.repeatForever(rotate)
+        geometryNode.runAction(rotateForever)
         
     }
     

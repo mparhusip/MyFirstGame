@@ -17,6 +17,7 @@ class GameScene: SKScene {
     let particle = SKEmitterNode(fileNamed: "MyParticle2")!
     var backgroundSound = SKAudioNode(fileNamed: "Fireworks-2")
     
+    
     override func didMove(to view: SKView) {
 
         addChild(label)
@@ -28,8 +29,8 @@ class GameScene: SKScene {
         label.fontColor = SKColor.yellow
         label.fontName = "Avenir"
         
-        
-        
+        self.backgroundColor = UIColor(displayP3Red: 139/255, green: 137/255, blue: 137/255, alpha: 1)
+    
         self.loadStarField()
         
         let recognizer1 = UITapGestureRecognizer(target: self, action: #selector(tap1))

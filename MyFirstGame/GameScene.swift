@@ -29,7 +29,7 @@ class GameScene: SKScene {
         label.fontColor = SKColor.yellow
         label.fontName = "Avenir"
         
-        self.backgroundColor = UIColor(displayP3Red: 139/255, green: 137/255, blue: 137/255, alpha: 1)
+        self.backgroundColor = UIColor(displayP3Red: 139/255, green: 131/255, blue: 120/255, alpha: 0)
     
         self.loadStarField()
         

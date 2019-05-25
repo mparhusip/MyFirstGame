@@ -9,6 +9,7 @@
 import UIKit
 import SpriteKit
 import GameplayKit
+import GameController
 
 class GameViewController2: UIViewController {
     
@@ -21,9 +22,23 @@ class GameViewController2: UIViewController {
         let skView = view as! SKView
         skView.presentScene(scene)
         
+        let recognizer = UITapGestureRecognizer(target: self, action: #selector(tap))
+        view.addGestureRecognizer(recognizer)
+
+//        let audio = SKAudioNode(fileNamed: "Fireworks-2")
+//        scene.addChild(audio)
+//        let audioStop = SKAction.stop()
+//        scene.run(audioStop)
         
     }
     
+    @objc func tap(recognizer: UITapGestureRecognizer) {
+
+        performSegue(withIdentifier: "back_segue", sender: nil)
+        
+
+
+        }
     
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {

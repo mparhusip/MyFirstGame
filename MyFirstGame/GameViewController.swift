@@ -15,7 +15,9 @@ class GameViewController: UIViewController {
     var scnView: SCNView!
     var scnScene: SCNScene!
     var cameraNode: SCNNode!
-     var geometry: SCNGeometry!
+    var geometry: SCNGeometry!
+
+
     
     let position = SCNVector3(x: 2, y: 3, z: 5)
     
@@ -43,6 +45,14 @@ class GameViewController: UIViewController {
 //
 //        print(materialBox)
 //
+        
+        
+//        let materialBox = geometry.firstMaterial
+//        let materialBoxNode = scnScene.rootNode.childNode(withName: "material", recursively: true)
+//
+        
+//        materialBox?.accessibilityLabel?.append("?")
+//        SCNTransaction.commit()
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
         scnView.addGestureRecognizer(tapGesture)
@@ -85,7 +95,28 @@ class GameViewController: UIViewController {
 //            material.emission.contents = UIColor.red
 //
 //            SCNTransaction.commit()
+//            let node = scnView.scene!.rootNode.childNode(withName: "Camera", recursively: false)
+//            let zoomingIn = SCNAction.moveBy(x: scnView.frame.maxX, y: scnView.frame.maxY, z: 10, duration: 2)
+////
+//            let zoomInAction = SCNAction.scale(to: 15, duration: 1)
+//            cameraNode.runAction(zoomInAction)
+//
+//            let moveBox = SCNAction.move(to: SCNVector3(x: 0, y: 0, z: 0), duration: 2)
+//            let moveToOther = changedTransition()
+//            let sequence = SCNAction.sequence([moveBox, moveToOther])
+            
+//            cameraNode.runAction(moveBox)
+            
+//            if scnView.preferredFramesPerSecond == 57 {
+//
+//                performSegue(withIdentifier: "transform_segue", sender: nil)
+//
+//            }
+//
             performSegue(withIdentifier: "transform_segue", sender: nil)
+            
+            
+            
             
         }
 
@@ -118,6 +149,7 @@ class GameViewController: UIViewController {
 
     func setupCamera(){
         cameraNode = SCNNode()
+        cameraNode.name = "Camera"
         cameraNode.camera = SCNCamera()
         cameraNode.position = SCNVector3(x: 0, y: 0 , z: 10)
         scnScene.rootNode.addChildNode(cameraNode)
@@ -128,7 +160,7 @@ class GameViewController: UIViewController {
         
         switch ShapeType.random(){
         default:
-            geometry = SCNBox(width: 3, height: 3, length: 3, chamferRadius: 0)
+            geometry = SCNBox(width: 2, height: 2, length: 2, chamferRadius: 0)
         }
         
         let color = randomColor()
@@ -161,6 +193,10 @@ class GameViewController: UIViewController {
         return color
     }
     
+    func changedTransition() -> SCNAction {
+            performSegue(withIdentifier: "transform_segue", sender: nil)
+        return changedTransition()
+    }
     
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
@@ -174,3 +210,5 @@ class GameViewController: UIViewController {
     
 
 }
+
+

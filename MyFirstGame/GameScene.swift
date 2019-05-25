@@ -8,60 +8,20 @@
 
 import SpriteKit
 import GameplayKit
+import UIKit
 
 class GameScene: SKScene {
     
     
     let label = SKLabelNode(text: "Happy Birthday")
     let particle = SKEmitterNode(fileNamed: "MyParticle2")!
-    let particleBlue = SKEmitterNode(fileNamed: "MyParticle2")
-    let particleRed = SKEmitterNode(fileNamed: "MyParticle2")
-    
-    
+    var backgroundSound = SKAudioNode(fileNamed: "Fireworks-2")
     
     override func didMove(to view: SKView) {
-//
-//        addChild(label)
-//        addChild(particle)
-//        addChild(particleBlue!)
-//        addChild(particleRed!)
-//
-//        label.position = CGPoint(x: view.frame.width / 2 , y: view.frame.height / 2)
-//        label.fontSize = 50
-//        label.fontColor = SKColor.yellow
-//        label.fontName = "Avenir"
-//
-//        particle.particleColor = .white
-//
-//        DispatchQueue.main.async {
-//            self.particle.position = CGPoint(x: CGFloat.random(in: 0...view.frame.width), y: CGFloat.random(in: 0...view.frame.height))
-//
-//            // Fade Out Action
-//            //        let moveParticle = SKAction.fadeOut(withDuration: 1)
-//            //
-//            //        particle.run(moveParticle)
-//
-//
-//            if let part = self.particleBlue {
-//                print(part.particleColor)
-//                part.particleColor = UIColor.blue
-//                print(part.particleColor)
-//                part.position = CGPoint(x: CGFloat.random(in: 0...view.frame.width), y: CGFloat.random(in: 0...view.frame.height))
-//            }
-//
-//            self.particleRed?.particleColor = UIColor.red
-//            print("red")
-//            self.particleRed?.position = CGPoint(x: CGFloat.random(in: 0...view.frame.width), y: CGFloat.random(in: 0...view.frame.height))
-//        }
-//
-//        let recognizer = UITapGestureRecognizer(target: self, action: #selector(tap))
-//        view.addGestureRecognizer(recognizer)
 
-        
         addChild(label)
-        addChild(particle)
-        addChild(particleBlue!)
-        addChild(particleRed!)
+        
+        addChild(backgroundSound)
         
         label.position = CGPoint(x: view.frame.width / 2 , y: view.frame.height / 2)
         label.fontSize = 50
@@ -69,34 +29,18 @@ class GameScene: SKScene {
         label.fontName = "Avenir"
         
         
-        particle.position = CGPoint(x: CGFloat.random(in: 0...view.frame.width), y: CGFloat.random(in: 0...view.frame.height))
         
-        // Fade Out Action
-        //        let moveParticle = SKAction.fadeOut(withDuration: 1)
-        //
-        //        particle.run(moveParticle)
+        self.loadStarField()
         
-        
-        
-        particleBlue?.particleColor = UIColor.blue
-        particleBlue?.position = CGPoint(x: CGFloat.random(in: 0...view.frame.width), y: CGFloat.random(in: 0...view.frame.height))
-        
-        particleRed?.particleColor = UIColor.red
-        particleRed?.position = CGPoint(x: CGFloat.random(in: 0...view.frame.width), y: CGFloat.random(in: 0...view.frame.height))
-        
-        
-        
-        
-        let recognizer = UITapGestureRecognizer(target: self, action: #selector(tap))
-        view.addGestureRecognizer(recognizer)
-        
-        
-        
-        
-        
+        let recognizer1 = UITapGestureRecognizer(target: self, action: #selector(tap1))
+        view.addGestureRecognizer(recognizer1)
+      
+//        let fireworksSound = SKAction.playSoundFileNamed("Fireworks-2", waitForCompletion: false)
+//        self.run(fireworksSound)
+//        
     }
     
-    @objc func tap(recognizer: UITapGestureRecognizer) {
+    @objc func tap1(recognizer1: UITapGestureRecognizer) {
         //        let viewLocation = recognizer.location(in: view)
         //        let sceneLocation = convertPoint(fromView: viewLocation)
         //        let moveByAction = SKAction.moveBy(x: sceneLocation.x - label.position.x, y: sceneLocation.y - label.position.y, duration: 1)
@@ -113,7 +57,7 @@ class GameScene: SKScene {
         //        label.run(scale)
         
         
-        let viewLocation = recognizer.location(in: self.view)
+        let viewLocation = recognizer1.location(in: self.view)
         let sceneLocation = convertPoint(fromView: viewLocation)
         
         //        if atPoint(sceneLocation) == label {
@@ -125,9 +69,9 @@ class GameScene: SKScene {
         //            label.run(scale)
         
         
-        let sceneNodes = nodes(at: sceneLocation)
+//        let sceneNodes = nodes(at: sceneLocation)
         
-        for sceneNode in sceneNodes {
+//        for sceneNode in sceneNodes {
             //            if sceneNode == label {
             //                let scale = SKAction.scale(to: 0.5, duration: 1)
             //            let scale = SKAction.scaleX(to: 0.5, duration: 1)
@@ -146,14 +90,14 @@ class GameScene: SKScene {
             //            label.run(repeatSequence)
             //
             
-            let move = SKAction.move(to: sceneLocation, duration: 1)
+//            let move = SKAction.move(to: sceneLocation, duration: 1)
             //            let scale = SKAction.scaleX(to: 0.5, y: 2, duration: 1)
-            let scale = SKAction.scaleX(by: 0.5, y: 2, duration: 1)
-            let actions = [move, scale]
-            let sequence = SKAction.sequence(actions)
-            label.run(sequence)
-            break
-        }
+//            let scale = SKAction.scaleX(by: 0.5, y: 2, duration: 1)
+//            let actions = [move, scale]
+//            let sequence = SKAction.sequence(actions)
+//            label.run(sequence)
+//            break
+//        }
         
         //        let particleNodes = nodes(at: sceneLocation)
         //
@@ -163,6 +107,31 @@ class GameScene: SKScene {
         //            let sequenceParticle = SKAction.sequence(actionsParticle)
         //            particle.run(sequenceParticle)
         //            break
+        
+//        let fireworksSoundStop = SKAction.stop()
+//        self.run(fireworksSoundStop)
+//        break
+//        }
+//        let startTransition = SKTransition.push(with: .right, duration: 3)
+//        let stopSound = SKAction.pause()
+//        let sequence = SKAction.sequence([stopSound, startTransition])
+//        backgroundSound.run(sequence)
+////        break
+//        }
+        
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let stopSound = SKAction.pause()
+        backgroundSound.run(stopSound)
+        
+    }
+    func loadStarField() {
+        
+        let starField = SparksNode()
+        self.addChild(starField)
+        starField.beginSpawningStars()
+        
     }
 }
 

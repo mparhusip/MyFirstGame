@@ -193,11 +193,15 @@ class GameViewController: UIViewController {
         return color
     }
     
-    func changedTransition() -> SCNAction {
-            performSegue(withIdentifier: "transform_segue", sender: nil)
-        return changedTransition()
-    }
+//    func changedTransition() -> SCNAction {
+//            performSegue(withIdentifier: "transform_segue", sender: nil)
+//        return changedTransition()
+//    }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+         let moveBox = SCNAction.move(to: SCNVector3(x: 0, y: 0, z: 0), duration: 0.5)
+        cameraNode.runAction(moveBox)
+    }
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         if UIDevice.current.userInterfaceIdiom == .phone {

@@ -26,7 +26,7 @@ class GameScene: SKScene {
         
         label.position = CGPoint(x: view.frame.width / 2 , y: view.frame.height / 2)
         label.fontSize = 50
-        label.fontColor = SKColor.yellow
+        label.fontColor = SKColor(displayP3Red: 255/255, green: 208/255, blue: 39/255, alpha: 1)
         label.fontName = "Avenir"
         
         self.backgroundColor = UIColor(displayP3Red: 25/255, green: 25/255, blue: 112/255, alpha: 1)
